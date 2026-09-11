@@ -23,7 +23,7 @@ body {
   aspect-ratio: 16 / 8;
 
   /* 🔽 ВОТ ТУТ МЕНЯЕШЬ ССЫЛКУ НА КАРТИНКУ 🔽 */
-  background-image: url('ССЫЛКА_НА_ТВОЮ_КАРТИНКУ');
+  background-image: url('https://raw.githack.com/kekgh451/keka/d615b85cf7f81a1f3354b58239cca0aad1d51cfe/%D0%BE%D0%B1%D0%BE%D0%B8.png');
   background-size: cover;       /* заполнить всю сцену */
   background-position: center;  /* по центру */
   background-repeat: no-repeat;

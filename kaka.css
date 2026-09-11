@@ -16,7 +16,7 @@ body {
 }
 
 /* Сцена — теперь картинка это ФОН */
-..stage {
+.stage {
   position: relative;
   width: 95vw;
   height: 95vh;         /* ← вместо aspect-ratio */

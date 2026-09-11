@@ -1,0 +1,114 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background: #111;
+  font-family: sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Сцена — теперь картинка это ФОН */
+.stage {
+  position: relative;
+  width: 95vw;
+  max-width: 1400px;
+  aspect-ratio: 16 / 8;
+
+  /* 🔽 ВОТ ТУТ МЕНЯЕШЬ ССЫЛКУ НА КАРТИНКУ 🔽 */
+  background-image: url('https://raw.githack.com/kekgh451/keka/d615b85cf7f81a1f3354b58239cca0aad1d51cfe/%D0%BE%D0%B1%D0%BE%D0%B8.png');
+  background-size: cover;       /* заполнить всю сцену */
+  background-position: center;  /* по центру */
+  background-repeat: no-repeat;
+
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+}
+
+/* Невидимые хотспоты поверх */
+.hitbox {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.15s ease;
+  z-index: 10;
+
+  /* 🔍 РАСКОММЕНТИРУЙ ЭТИ ДВЕ СТРОЧКИ, ЧТОБЫ ВИДЕТЬ ЗОНЫ ПРИ НАСТРОЙКЕ: */
+  /* background: rgba(255, 0, 0, 0.35); */
+  /* outline: 2px dashed red; */
+}
+
+.hitbox:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ====== Анимации ====== */
+@keyframes wiggle {
+  0%   { transform: rotate(0deg) scale(1); }
+  25%  { transform: rotate(-6deg) scale(1.05); }
+  50%  { transform: rotate(6deg) scale(1.1); }
+  75%  { transform: rotate(-4deg) scale(1.05); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+@keyframes boing {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.3) rotate(10deg); }
+  60%  { transform: scale(0.9) rotate(-8deg); }
+  100% { transform: scale(1); }
+}
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%     { transform: translateX(-10px) rotate(-3deg); }
+  40%     { transform: translateX(10px) rotate(3deg); }
+  60%     { transform: translateX(-8px) rotate(-2deg); }
+  80%     { transform: translateX(8px) rotate(2deg); }
+}
+@keyframes fadein {
+  0%   { opacity: 0; transform: scale(0.3) translateY(20px); }
+  60%  { opacity: 1; transform: scale(1.2) translateY(-10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes floatup {
+  0%   { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-200px) scale(1.8); }
+}
+
+.animate-wiggle { animation: wiggle 0.6s ease; }
+.animate-boing  { animation: boing 0.5s ease; }
+.animate-shake  { animation: shake 0.5s ease; }
+
+.emoji-pop {
+  position: absolute;
+  font-size: 60px;
+  pointer-events: none;
+  z-index: 999;
+  animation: floatup 1.2s ease-out forwards;
+}
+
+.heart-attach {
+  position: absolute;
+  font-size: 40px;
+  pointer-events: none;
+  animation: fadein 0.5s ease;
+  z-index: 999;
+}
+
+.fart-cloud {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle, #b5e61d 0%, #7ab800 60%, transparent 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 998;
+  opacity: 0.85;
+  animation: fadein 0.4s ease, floatup 1.5s ease-out 0.4s forwards;
+}

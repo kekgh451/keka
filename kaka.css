@@ -20,7 +20,7 @@ body {
   position: relative;
   width: 95vw;
   max-width: 1400px;
-  aspect-ratio: 199 /50;   /* ← подгони под пропорции картинки */
+  aspect-ratio: 119 /50;   /* ← подгони под пропорции картинки */
   
   background-image: url('https://raw.githack.com/kekgh451/keka/d615b85cf7f81a1f3354b58239cca0aad1d51cfe/%D0%BE%D0%B1%D0%BE%D0%B8.png');
   background-size: 100% 100%;   /* ← ключевое */

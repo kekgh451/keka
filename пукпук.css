@@ -1,0 +1,118 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #1a1a1a;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+/* Сцена — пропорциональна картинке */
+.stage {
+  position: relative;
+  width: 100vw;
+  max-width: 1400px;
+  aspect-ratio: 16 / 8;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Сама картинка-коллаж */
+.collage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  pointer-events: none; /* чтобы клики проходили в хотспоты */
+}
+
+/* Невидимые хотспоты */
+.hitbox {
+  position: absolute;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.15s ease, background 0.15s ease;
+  /* Раскомментируй строчку ниже, чтобы ВИДЕТЬ зоны при настройке: */
+  /* background: rgba(255, 0, 0, 0.25); outline: 2px dashed red; */
+  z-index: 10;
+}
+
+.hitbox:hover {
+  /* При наведении лёгкая подсветка — можно убрать */
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ====== Анимации ====== */
+@keyframes wiggle {
+  0%   { transform: rotate(0deg) scale(1); }
+  25%  { transform: rotate(-6deg) scale(1.05); }
+  50%  { transform: rotate(6deg) scale(1.1); }
+  75%  { transform: rotate(-4deg) scale(1.05); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+@keyframes boing {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.3) rotate(10deg); }
+  60%  { transform: scale(0.9) rotate(-8deg); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%     { transform: translateX(-10px) rotate(-3deg); }
+  40%     { transform: translateX(10px) rotate(3deg); }
+  60%     { transform: translateX(-8px) rotate(-2deg); }
+  80%     { transform: translateX(8px) rotate(2deg); }
+}
+
+@keyframes fadein {
+  0%   { opacity: 0; transform: scale(0.3) translateY(20px); }
+  60%  { opacity: 1; transform: scale(1.2) translateY(-10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes floatup {
+  0%   { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-200px) scale(1.8); }
+}
+
+.animate-wiggle { animation: wiggle 0.6s ease; }
+.animate-boing  { animation: boing 0.5s ease; }
+.animate-shake  { animation: shake 0.5s ease; }
+
+/* Летящий эмодзи */
+.emoji-pop {
+  position: absolute;
+  font-size: 60px;
+  pointer-events: none;
+  z-index: 999;
+  animation: floatup 1.2s ease-out forwards;
+}
+
+/* Прилипающее сердечко */
+.heart-attach {
+  position: absolute;
+  font-size: 40px;
+  pointer-events: none;
+  animation: fadein 0.5s ease;
+  z-index: 999;
+}
+
+/* Облачко от пука */
+.fart-cloud {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle, #b5e61d 0%, #7ab800 60%, transparent 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 998;
+  opacity: 0.85;
+  animation: fadein 0.4s ease, floatup 1.5s ease-out 0.4s forwards;
+}

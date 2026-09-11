@@ -111,7 +111,7 @@ body {
   z-index: 998;
   opacity: 0.85;
   animation: fadein 0.4s ease, floatup 1.5s ease-out 0.4s forwards;
-}
 .stage {
-  border: 5px solid lime !important;
+  border: 5px solid lime;
 }
+background-size: contain;
